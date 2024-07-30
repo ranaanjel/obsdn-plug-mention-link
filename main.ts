@@ -116,7 +116,9 @@ export default class MyPlugin extends Plugin {
 	if(iconURL[0] == "/") {
 		let originValue = valueURL.origin ;
 		//console.log(valueURL)
-		iconURL = valueURL+iconURL;
+		iconURL = originValue+iconURL;
+
+		console.log(valueURL, iconURL)
 	}
 
 	this.imageURL = iconURL;
