@@ -2,7 +2,7 @@ import { App, Editor, MarkdownView, Modal, Notice, Plugin, PluginSettingTab, Set
 import { parse as p } from "node-html-parser";
 import {exec} from "child_process"
 import {promisify} from "util"
-import { Url } from 'url';
+//import { Url } from 'url';
 
 const execP = promisify(exec)
 
@@ -96,10 +96,11 @@ export default class MyPlugin extends Plugin {
 
 	let htmlText = "";
 	let command = "curl '" + url + "'"; 
-  let {stdout} = await execP(command)
+	  let {stdout} = await execP(command, {maxBuffer:1024*2048})
 
 	//console.log(stdout)
 	htmlText = stdout;
+
 	const doc = p(htmlText);
   
 	
